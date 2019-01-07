@@ -1,38 +1,49 @@
 <h1>Tasty Burgers!</h1>
+    <img src="/assets/img/pulp.jpeg" class="center" alt="Jules from Pulp Fiction"><br>
 
-<h2>Burgers ready to be devoured!</h2>
+<div class="container">
+<div class="row">
+    <div class="col-sm">
+        <h2>Burgers ready to be devoured:</h2>
+            <ul>
+            {{#each burgers}}
+                {{#unless devoured}}
+                {{> burgers/burger-block devoured=true}}
+                {{/unless}}
+            {{/each}}
+            </ul><br>
+    </div>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+    <div class="col-sm">
+        <h2>Burgers that have been devoured:</h2>
+            <ul>
+            {{#each burgers}}
+                {{#if devoured}}
+                {{> burgers/burger-block devoured=false}}
+                {{/if}}
+            {{/each}}
+            </ul><br>
+    
+    </div>
+</div>
+        <h2>Add a Burger</h2>
+            <span>
+            <form class="create-form">
+            <div class="form-group">
+                <label for="ca">Burger Name:</label>
+                <input type="text" id="ca" name="burger_name">
+            
 
-<h2>Burgers that have been devoured!</h2>
+            <div class="form-group" id="selection">
+                <label for="devoured">Devour?</label><br>
+                <input type="radio" name="devoured" value="1"> Devoured!<br>
+                <input type="radio" name="devoured" value="0" checked> Undevoured!
+            </div>
 
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devoured=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+            <button type="submit" class="btn" >Add Burger</button>
+            </div>
+            </form>
+            </span><br>
 
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="burger_name">
-  </div>
-
-  <div class="form-group" id="selection">
-    <label for="devoured">Devour?</label><br>
-    <input type="radio" name="devoured" value="1"> Devoured!<br>
-    <input type="radio" name="devoured" value="0" checked> Undevoured!
-  </div>
-
-  <button type="submit">Add Burger</button>
-</form>
+        <img src="/assets/img/tasty_burger.JPG" class="center2" alt="Jules from Pulp Fiction"><br>
+</div>
